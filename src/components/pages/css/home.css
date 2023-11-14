@@ -1,0 +1,70 @@
+.home-div{
+    background-color: rgb(173, 216, 230, 0.7);
+    padding: 1%;
+    color: rgba(0, 0, 0, 0.842);
+}
+
+h1{
+    text-align: center;
+    padding: 80px;
+    font-weight: 800;
+}
+
+
+.container-asides-article{
+    display: flex;
+    justify-items: center;
+    align-items: start;
+    flex-wrap: wrap;
+    width: 95% auto; 
+}
+
+.main-article{
+    width: 60%;
+    background-color: azure;
+    min-height: 600px;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 2%;
+    padding: 1%;
+}
+
+.article-p{
+    padding: 2%;
+    margin: 5%;
+    color: black;
+}
+
+.creator-p{
+    margin: 0 auto;
+}
+
+.main-article-img{
+    border-radius: 0;
+    width: 85%;
+    max-height: 500px;
+    margin: 4% auto;
+}
+
+
+/* TABLETS AND PHONES */
+@media only screen and (max-width: 972px){
+    .container-asides-article{
+        flex-direction: column;
+    }
+
+    .main-article{
+        width: 100%;
+        min-height: 600px;
+        border-radius: 0;
+        font-size: smaller;
+    }
+
+    .main-article-img{
+        width: 95%;
+        max-height: 200px;
+    }
+}
+

@@ -1,0 +1,27 @@
+.sponsors-div{
+    /* height: 1000px; */
+    background-color: azure;
+    width: 98% auto;
+    margin: 4% 0;
+    padding-bottom: 6%;
+}
+
+.sponsors-title{
+    color: rgb(65, 145, 117);
+    margin: 0;
+    padding-bottom: 100px;
+}
+
+.images-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.sponsor-img{
+    border-radius: 5%;
+    width: 200px;
+    height: 200px;
+}
