@@ -15,8 +15,8 @@ h1{
     display: flex;
     justify-items: center;
     align-items: start;
-    flex-wrap: wrap;
-    width: 95% auto; 
+    /* flex-wrap: wrap; */
+    width: 98% auto; 
 }
 
 .main-article{

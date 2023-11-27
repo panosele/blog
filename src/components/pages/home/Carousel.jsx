@@ -16,7 +16,12 @@ function Carousel(props) {
     // Update articlesToClick when props.articles changes
     useEffect(() => {
         if (props.articles !== null) {
-            setArticlesToClick(props.articles.slice(-8, props.articles.length -1).reverse());
+            if (props.articles.length < 8) {
+                setArticlesToClick(props.articles.reverse());
+            }else{
+                setArticlesToClick(props.articles.slice(-8, props.articles.length -1).reverse());
+            }
+            
         }
     }, [props.articles]);
 
@@ -40,7 +45,7 @@ function Carousel(props) {
                     <div key={i} className='card-container'>
                         <img className='card-img' src={article.image} alt="" />
                         <h4 id={article.id} className='card-title' onClick={handleClick}>{article.title.toUpperCase()}</h4>
-                        <h6 className="card-category">{article.category.toUpperCase()}</h6>
+                        <a href={`/categories/${article.category.toLowerCase()}`}><h6 className="card-category">{article.category.toUpperCase()}</h6></a>
                         <p className="card-date">Date: {article.date.slice(0, 10)}</p>
                     </div>
                 ))}

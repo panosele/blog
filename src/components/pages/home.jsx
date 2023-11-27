@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
+
 import Banner from './home/Banner';
 import Carousel from './home/Carousel';
 import Sponsors from './home/Sponsors';
 import Newsletter from './home/Newsletter';
-import ReactMarkdown from 'react-markdown';
+import MainArticle from './home/MainArticle';
 
 import "./css/home.css"
  
@@ -28,14 +29,7 @@ const Home = (props) => {
 
       <div className="container-asides-article">
         <Banner />
-        {mainArticle && (
-          <div className="main-article">
-            <h1>{mainArticle.title}</h1>
-            <img className="main-article-img" src={mainArticle.image} alt="" />
-            <ReactMarkdown>{mainArticle.article_body}</ReactMarkdown>
-            <p className='creator-p'>Created by {mainArticle.creator}</p>
-          </div>
-        )}
+        <MainArticle mainArticle={mainArticle}/>
         <Banner />
       </div>
       

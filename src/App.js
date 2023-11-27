@@ -1,7 +1,8 @@
 import './App.css';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import Categories from './components/pages/categories';
 import About from './components/pages/about';
 import Contact from './components/pages/contact'
 import AppNavbar from './components/Navbar/Navbar';
@@ -32,15 +33,22 @@ function App() {
     getArticles();
   }, []);
 
+  const csrftoken = useMemo(() => {
+    const cookieValue = document.cookie
+      .split('; ')
+      .find(row => row.startsWith('csrftoken=')).split('=')[1];
+      return cookieValue
+  })
 
   return (
     <div>
       <Router>
-        <AppNavbar />
+        <AppNavbar csrftoken={csrftoken}/>
         <Routes>
           <Route exact path='/' element={<Home articles={articles} />} />
-          <Route path='/content' element={<About />} />
-          <Route path='/content2' element={<About />} />
+          <Route path='/categories/localnews' element={<Categories category={"LOCALNEWS"} articles={articles} />} />
+          <Route path='/categories/touristnews' element={<Categories category={"TOURISTNEWS"} articles={articles} />} />
+          <Route path='/categories/technology' element={<Categories category={"TECHNOLOGY"} articles={articles} />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/about' element={<About />} />
         </Routes>
