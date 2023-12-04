@@ -13,6 +13,7 @@ import axios from 'axios';
 
 function App() {
   const [articles, setArticles] = useState(null);
+  const [csrftoken, setcsrftoken] = useState(null);
   
   async function getArticles() {
     try {
@@ -33,17 +34,29 @@ function App() {
     getArticles();
   }, []);
 
-  const csrftoken = useMemo(() => {
-    const cookieValue = document.cookie
+  const getToken = () => {
+    try{
+      const cookieValue = document.cookie
       .split('; ')
       .find(row => row.startsWith('csrftoken=')).split('=')[1];
       return cookieValue
+    } catch (error) {
+      console.error(error);
+    }
+  
+    
+  };
+
+  useEffect(() => {
+    setcsrftoken(getToken());
+    console.log(csrftoken);
+    console.log(typeof(csrftoken));
   })
 
   return (
     <div>
       <Router>
-        <AppNavbar csrftoken={csrftoken}/>
+        <AppNavbar  csrftoken={csrftoken ? csrftoken : null}/>
         <Routes>
           <Route exact path='/' element={<Home articles={articles} />} />
           <Route path='/categories/localnews' element={<Categories category={"LOCALNEWS"} articles={articles} />} />
